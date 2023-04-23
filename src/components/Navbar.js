@@ -31,8 +31,8 @@ const Navbar = () => {
   return (
     <div className='exchange__header grid'>
       <div className='exchange__header--brand flex'>
-        <img src={logo} className='logo' alt='Dapp logo'></img>
-        <h1>Dapp Token Exchange</h1>
+        <img src={logo} className='logo' alt='DApp logo'></img>
+        <h1>DApp Token Exchange</h1>
       </div>
 
       <div className='exchange__header--networks flex'>
