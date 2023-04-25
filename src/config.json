@@ -15,6 +15,18 @@
     "explorerURL": "#"
   },
   "5": {
+    "exchange": {
+      "address": ""
+    },
+    "DApp": {
+      "address": ""
+    },
+    "mETH": {
+      "address": ""
+    },
+    "mDAI": {
+      "address": ""
+    },
     "explorerURL": "https://goerli.etherscan.io"
   }
 }
