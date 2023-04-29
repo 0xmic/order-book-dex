@@ -31,7 +31,7 @@ const Navbar = () => {
     <div className='exchange__header grid'>
       <div className='exchange__header--brand flex'>
         <img src={logo} className='logo' alt='DApp logo'></img>
-        <h1>DApp Token Exchange</h1>
+        <h1>Dapp Token Exchange</h1>
       </div>
 
       <div className='exchange__header--networks flex'>
@@ -66,11 +66,7 @@ const Navbar = () => {
         )}
         {account ? (
           <a
-            href={
-              config[chainId]
-                ? `${config[chainId].explorerURL}/address/${account}`
-                : `#`
-            }
+            href={config[chainId] ? `${config[chainId].explorerURL}/address/${account}` : `#`}
             target='_blank'
             rel='noreferrer'
           >

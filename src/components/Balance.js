@@ -18,9 +18,7 @@ const Balance = () => {
 
   const exchange = useSelector((state) => state.exchange.contract)
   const exchangeBalances = useSelector((state) => state.exchange.balances)
-  const transferInProgress = useSelector(
-    (state) => state.exchange.transferInProgress
-  )
+  const transferInProgress = useSelector((state) => state.exchange.transferInProgress)
 
   const tokens = useSelector((state) => state.tokens.contracts)
   const symbols = useSelector((state) => state.tokens.symbols)
@@ -53,24 +51,10 @@ const Balance = () => {
     e.preventDefault()
 
     if (token.address === tokens[0].address) {
-      transferTokens(
-        provider,
-        exchange,
-        'Deposit',
-        token,
-        token1TransferAmount,
-        dispatch
-      )
+      transferTokens(provider, exchange, 'Deposit', token, token1TransferAmount, dispatch)
       setToken1TransferAmount(0)
     } else {
-      transferTokens(
-        provider,
-        exchange,
-        'Deposit',
-        token,
-        token2TransferAmount,
-        dispatch
-      )
+      transferTokens(provider, exchange, 'Deposit', token, token2TransferAmount, dispatch)
       setToken2TransferAmount(0)
     }
   }
@@ -79,24 +63,10 @@ const Balance = () => {
     e.preventDefault()
 
     if (token.address === tokens[0].address) {
-      transferTokens(
-        provider,
-        exchange,
-        'Withdraw',
-        token,
-        token1TransferAmount,
-        dispatch
-      )
+      transferTokens(provider, exchange, 'Withdraw', token, token1TransferAmount, dispatch)
       setToken1TransferAmount(0)
     } else {
-      transferTokens(
-        provider,
-        exchange,
-        'Withdraw',
-        token,
-        token2TransferAmount,
-        dispatch
-      )
+      transferTokens(provider, exchange, 'Withdraw', token, token2TransferAmount, dispatch)
       setToken2TransferAmount(0)
     }
   }
@@ -112,11 +82,7 @@ const Balance = () => {
       <div className='component__header flex-between'>
         <h2>Balance</h2>
         <div className='tabs'>
-          <button
-            onClick={tabHandler}
-            ref={depositRef}
-            className='tab tab--active'
-          >
+          <button onClick={tabHandler} ref={depositRef} className='tab tab--active'>
             Deposit
           </button>
           <button onClick={tabHandler} ref={withdrawRef} className='tab'>
@@ -147,13 +113,7 @@ const Balance = () => {
           </p>
         </div>
 
-        <form
-          onSubmit={
-            isDeposit
-              ? (e) => depositHandler(e, tokens[0])
-              : (e) => withdrawHandler(e, tokens[0])
-          }
-        >
+        <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[0]) : (e) => withdrawHandler(e, tokens[0])}>
           <label htmlFor='token0'>{symbols && symbols[0]} Amount</label>
           <input
             type='text'
@@ -193,13 +153,7 @@ const Balance = () => {
           </p>
         </div>
 
-        <form
-          onSubmit={
-            isDeposit
-              ? (e) => depositHandler(e, tokens[1])
-              : (e) => withdrawHandler(e, tokens[1])
-          }
-        >
+        <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[1]) : (e) => withdrawHandler(e, tokens[1])}>
           <label htmlFor='token1'>{symbols && symbols[1]} Amount</label>
           <input
             type='text'

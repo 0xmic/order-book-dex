@@ -1,9 +1,6 @@
 import { useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-  myOpenOrdersSelector,
-  myFilledOrdersSelector
-} from '../store/selectors'
+import { myOpenOrdersSelector, myFilledOrdersSelector } from '../store/selectors'
 
 import sort from '../assets/sort.svg'
 import { cancelOrder } from '../store/interactions'
@@ -47,11 +44,7 @@ const Transactions = () => {
             <h2>My Orders</h2>
 
             <div className='tabs'>
-              <button
-                onClick={tabHandler}
-                ref={orderRef}
-                className='tab tab--active'
-              >
+              <button onClick={tabHandler} ref={orderRef} className='tab tab--active'>
                 Orders
               </button>
               <button onClick={tabHandler} ref={tradeRef} className='tab'>
@@ -82,15 +75,10 @@ const Transactions = () => {
                   myOpenOrders.map((order, index) => {
                     return (
                       <tr key={index}>
-                        <td style={{ color: `${order.orderTypeClass}` }}>
-                          {order.token0Amount}
-                        </td>
+                        <td style={{ color: `${order.orderTypeClass}` }}>{order.token0Amount}</td>
                         <td>{order.tokenPrice}</td>
                         <td>
-                          <button
-                            className='button--sm'
-                            onClick={() => cancelHandler(order)}
-                          >
+                          <button className='button--sm' onClick={() => cancelHandler(order)}>
                             Cancel
                           </button>
                         </td>
@@ -107,11 +95,7 @@ const Transactions = () => {
             <h2>My Transactions</h2>
 
             <div className='tabs'>
-              <button
-                onClick={tabHandler}
-                ref={orderRef}
-                className='tab tab--active'
-              >
+              <button onClick={tabHandler} ref={orderRef} className='tab tab--active'>
                 Orders
               </button>
               <button onClick={tabHandler} ref={tradeRef} className='tab'>

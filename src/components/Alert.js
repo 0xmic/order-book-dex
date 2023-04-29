@@ -27,48 +27,26 @@ const Alert = () => {
   return (
     <div>
       {isPending ? (
-        <div
-          className='alert alert--remove'
-          onClick={removeHandler}
-          ref={alertRef}
-        >
+        <div className='alert alert--remove' onClick={removeHandler} ref={alertRef}>
           <h1>Transaction Pending...</h1>
         </div>
       ) : isError ? (
-        <div
-          className='alert alert--remove'
-          onClick={removeHandler}
-          ref={alertRef}
-        >
+        <div className='alert alert--remove' onClick={removeHandler} ref={alertRef}>
           <h1>Transaction Will Fail</h1>
         </div>
       ) : !isPending && events[0] ? (
-        <div
-          className='alert alert--remove'
-          onClick={removeHandler}
-          ref={alertRef}
-        >
+        <div className='alert alert--remove' onClick={removeHandler} ref={alertRef}>
           <h1>Transaction Successful</h1>
           <a
-            href={
-              config[network]
-                ? `${config[network].explorerURL}/tx/${events[0].transactionHash}`
-                : '#'
-            }
+            href={config[network] ? `${config[network].explorerURL}/tx/${events[0].transactionHash}` : '#'}
             target='_blank'
             rel='noreferrer'
           >
-            {events[0].transactionHash.slice(0, 6) +
-              '...' +
-              events[0].transactionHash.slice(60, 66)}
+            {events[0].transactionHash.slice(0, 6) + '...' + events[0].transactionHash.slice(60, 66)}
           </a>
         </div>
       ) : (
-        <div
-          className='alert alert--remove'
-          onClick={removeHandler}
-          ref={alertRef}
-        ></div>
+        <div className='alert alert--remove' onClick={removeHandler} ref={alertRef}></div>
       )}
     </div>
   )

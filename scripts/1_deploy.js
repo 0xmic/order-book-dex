@@ -9,9 +9,7 @@ async function main() {
 
   // Fetch accounts
   const accounts = await hre.ethers.getSigners()
-  console.log(
-    `Accounts fetched:\n${accounts[0].address}\n${accounts[1].address}\n`
-  )
+  console.log(`Accounts fetched:\n${accounts[0].address}\n${accounts[1].address}\n`)
 
   // Deploy contracts
   const dappToken = await Token.deploy('DApp Token', 'DAPP', '1000000')

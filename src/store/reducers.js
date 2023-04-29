@@ -178,9 +178,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
 
     case 'ORDER_FILL_SUCCESS':
       // Prevent duplicate orders
-      index = state.filledOrders.data.findIndex(
-        (order) => order.id.toString() === action.order.id.toString()
-      )
+      index = state.filledOrders.data.findIndex((order) => order.id.toString() === action.order.id.toString())
 
       if (index === -1) {
         data = [...state.filledOrders.data, action.order]
@@ -276,9 +274,7 @@ export const exchange = (state = DEFAULT_EXCHANGE_STATE, action) => {
 
     case 'NEW_ORDER_SUCCESS':
       // Prevent duplicate orders
-      index = state.allOrders.data.findIndex(
-        (order) => order.id.toString() === action.order.id.toString()
-      )
+      index = state.allOrders.data.findIndex((order) => order.id.toString() === action.order.id.toString())
 
       if (index === -1) {
         data = [...state.allOrders.data, action.order]

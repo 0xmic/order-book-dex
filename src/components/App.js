@@ -49,11 +49,7 @@ function App() {
 
     // Load exchange smart contract
     const exchangeConfig = config[chainId].exchange
-    const exchange = await loadExchange(
-      provider,
-      exchangeConfig.address,
-      dispatch
-    )
+    const exchange = await loadExchange(provider, exchangeConfig.address, dispatch)
 
     // Fetch all orders: open, filled, cancelled
     loadAllOrders(provider, exchange, dispatch)

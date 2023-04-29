@@ -58,11 +58,7 @@ const Order = () => {
       </div>
 
       <form onSubmit={isBuy ? buyHandler : sellHandler}>
-        {isBuy ? (
-          <label htmlFor='amount'>Buy Amount</label>
-        ) : (
-          <label htmlFor='amount'>Sell Amount</label>
-        )}
+        {isBuy ? <label htmlFor='amount'>Buy Amount</label> : <label htmlFor='amount'>Sell Amount</label>}
 
         <input
           type='text'
@@ -72,11 +68,7 @@ const Order = () => {
           onChange={(e) => setAmount(e.target.value)}
         />
 
-        {isBuy ? (
-          <label htmlFor='price'>Buy Price</label>
-        ) : (
-          <label htmlFor='price'>Sell Price</label>
-        )}
+        {isBuy ? <label htmlFor='price'>Buy Price</label> : <label htmlFor='price'>Sell Price</label>}
 
         <input
           type='text'
