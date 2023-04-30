@@ -1,13 +1,14 @@
-# Sample Hardhat Project
+# Delta Token Exchange
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project demonstrates a basic order book based decentralized exchange. It includes smart contracts for ERC-20 tokens that are traded on the exchange, as well as the exchange contract that manages deposits/withdrawals and trades on the DEX. Test files and scripts for deployment and seeding the exchange are also included.
 
-Try running some of the following tasks:
-
+To test the DEX locally, run the following:
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
 npx hardhat node
-npx hardhat run scripts/deploy.js
+
+npx hardhat --network localhost scripts/1_deploy.js
+
+npx hardhat --network localhost scripts/2_seed_exchange.js
+
+npm run start
 ```
