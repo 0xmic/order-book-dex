@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import dapp from '../assets/dapp.svg'
+import delta from '../assets/delta.svg'
 import eth from '../assets/eth.svg'
 
 import { loadBalances, transferTokens } from '../store/interactions'
@@ -91,14 +91,14 @@ const Balance = () => {
         </div>
       </div>
 
-      {/* Deposit/Withdraw Component 1 (DApp) */}
+      {/* Deposit/Withdraw Component 1 (DELTA) */}
 
       <div className='exchange__transfers--form'>
         <div className='flex-between'>
           <p>
             <small>Token</small>
             <br />
-            <img src={dapp} alt='Token Logo' />
+            <img src={delta} alt='Token Logo' />
             {symbols && symbols[0]}
           </p>
           <p>

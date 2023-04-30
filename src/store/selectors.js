@@ -81,13 +81,13 @@ const decorateMyOpenOrder = (order, tokens) => {
 const decorateOrder = (order, tokens) => {
   let token0Amount, token1Amount
 
-  // Note: DApp should be considered token0, mETH is considered token1
-  // Example: Giving mETH in exchange for DApp
+  // Note: DELTA should be considered token0, mETH is considered token1
+  // Example: Giving mETH in exchange for DELTA
   if (order.tokenGive === tokens[1].address) {
-    token0Amount = order.amountGive // The amount of DApp we are giving
+    token0Amount = order.amountGive // The amount of DELTA we are giving
     token1Amount = order.amountGet // The amount of mETH we want...
   } else {
-    token0Amount = order.amountGet // The amount of DApp we want
+    token0Amount = order.amountGet // The amount of DELTA we want
     token1Amount = order.amountGive // The amount of mETH we are giving...
   }
 
@@ -100,7 +100,7 @@ const decorateOrder = (order, tokens) => {
     token0Amount: ethers.utils.formatUnits(token1Amount, 'ether'),
     token1Amount: ethers.utils.formatUnits(token0Amount, 'ether'),
     tokenPrice: tokenPrice,
-    formattedTimestamp: moment.unix(order.timestamp).format('h:mm:ssa - dd, MMM D, YYYY')
+    formattedTimestamp: moment.unix(order.timestamp).format('h:mm:ssa - dd M/D/YY')
   }
 }
 

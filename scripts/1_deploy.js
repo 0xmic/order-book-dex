@@ -12,17 +12,17 @@ async function main() {
   console.log(`Accounts fetched:\n${accounts[0].address}\n${accounts[1].address}\n`)
 
   // Deploy contracts
-  const dappToken = await Token.deploy('DApp Token', 'DAPP', '1000000')
-  await dappToken.deployed()
-  console.log(`DApp Token (DAPP) deployed to ${dappToken.address}`)
+  const deltaToken = await Token.deploy('Delta Token', 'DELTA', '1000000')
+  await deltaToken.deployed()
+  console.log(`Delta Token (DELTA) deployed to ${deltaToken.address}`)
 
   const mETH = await Token.deploy('mETH', 'mETH', '1000000')
   await mETH.deployed()
-  console.log(`mETH deployed to ${mETH.address}`)
+  console.log(`mETH (mETH) deployed to ${mETH.address}`)
 
   const mDAI = await Token.deploy('mDAI', 'mDAI', '1000000')
   await mDAI.deployed()
-  console.log(`mDAI deployed to ${mDAI.address}`)
+  console.log(`mDAI (mDAI) deployed to ${mDAI.address}`)
 
   const exchange = await Exchange.deploy(accounts[1].address, 10)
   await exchange.deployed()

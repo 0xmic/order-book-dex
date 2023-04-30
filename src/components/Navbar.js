@@ -30,8 +30,8 @@ const Navbar = () => {
   return (
     <div className='exchange__header grid'>
       <div className='exchange__header--brand flex'>
-        <img src={logo} className='logo' alt='DApp logo'></img>
-        <h1>Dapp Token Exchange</h1>
+        <img src={logo} className='logo' alt='DELTA logo'></img>
+        <h1>Delta Token Exchange</h1>
       </div>
 
       <div className='exchange__header--networks flex'>
@@ -75,9 +75,9 @@ const Navbar = () => {
               seed={account}
               size={10}
               scale={3}
-              color='#2187D0'
-              bgColor='F1F2F9'
-              spotColor='#767F92'
+              color='#e3e3e3'
+              bgColor='1c1c1c'
+              spotColor='#4c4c4c'
               className='identicon'
             />
           </a>
