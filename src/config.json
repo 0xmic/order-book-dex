@@ -28,5 +28,20 @@
       "address": "0x18441a3d8CD7Ebd55E17dBB4e60b2CffDBA9f9d9"
     },
     "explorerURL": "https://sepolia.etherscan.io"
+  },
+  "80001": {
+    "exchange": {
+      "address": "0x3480CA41E04591aC7E0c322760b7B0322dD37748"
+    },
+    "DELTA": {
+      "address": "0x6Da771D7305F5837143852f76C8Eb91f85d4aD56"
+    },
+    "mETH": {
+      "address": "0xe6FDBdF4E5c7ad92767cAF37FDe13B0A237fCf75"
+    },
+    "mDAI": {
+      "address": "0x05bfB41B24e85af95BD02c1Df01d449BB48787aE"
+    },
+    "explorerURL": "https://mumbai.polygonscan.com"
   }
 }
