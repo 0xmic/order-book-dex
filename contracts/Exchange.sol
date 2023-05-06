@@ -4,6 +4,10 @@ pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 import "./Token.sol";
 
+/**
+ * @title Decentralized token exchange contract
+ * @dev Allows for trading ERC20 tokens and managing orders
+ */
 contract Exchange {
     address public feeAccount;
     uint256 public feePercent;
@@ -47,6 +51,10 @@ contract Exchange {
         uint256 timestamp
     );
 
+    /**
+     * @title Struct representing an order on the exchange
+     * @dev Contains information about the order
+     */
     struct _Order {
         // Attributes of an order
         uint256 id;
@@ -58,14 +66,25 @@ contract Exchange {
         uint256 timestamp;
     }
 
+    /**
+     * @notice Initializes the exchange with a fee account and fee percentage
+     * @param _feeAccount The address of the account that receives fees
+     * @param _feePercent The percentage of the fee applied to each trade
+     */
     constructor(address _feeAccount, uint256 _feePercent) {
         feeAccount = _feeAccount;
         feePercent = _feePercent;
     }
 
 
-    // ------------------------
+    // --------------------------------------------------------------------------------
     // DEPOSIT AND WITHDRAW TOKEN
+
+    /**
+     * @notice Deposit tokens to the exchange
+     * @param _token Address of the token to deposit
+     * @param _amount Amount of tokens to deposit
+     */
     function depositToken(address _token, uint256 _amount) public {
         // Transfer tokens to exchange
         require(Token(_token).transferFrom(msg.sender, address(this), _amount));
@@ -77,6 +96,11 @@ contract Exchange {
         emit Deposit(_token, msg.sender, _amount, tokens[_token][msg.sender]);
     }
 
+    /**
+     * @notice Withdraw tokens from the exchange
+     * @param _token Address of the token to withdraw
+     * @param _amount Amount of tokens to withdraw
+     */
     function withdrawToken(address _token, uint256 _amount) public {
         //Ensure user has enough tokens to withdraw
         require(tokens[_token][msg.sender] >= _amount);
@@ -91,12 +115,26 @@ contract Exchange {
         emit Withdraw(_token, msg.sender, _amount, tokens[_token][msg.sender]);
     }
 
+    /**
+     * @notice Get the balance of a specific token for a user
+     * @param _token Address of the token
+     * @param _user Address of the user
+     * @return uint256 The token balance of the user
+     */
     function balanceOf(address _token, address _user) public view returns (uint256) {
         return tokens[_token][_user];
     }
 
-    // ------------------------
+    // --------------------------------------------------------------------------------
     // MAKE AND CANCEL ORDERS
+
+    /**
+     * @notice Create a new order on the exchange
+     * @param _tokenGet Address of the token to receive
+     * @param _amountGet Amount of tokens to receive
+     * @param _tokenGive Address of the token to give
+     * @param _amountGive Amount of tokens to give
+     */
     function makeOrder(
         address _tokenGet,
         uint256 _amountGet,
@@ -130,6 +168,10 @@ contract Exchange {
         );
     }
 
+    /**
+     * @notice Cancel an existing order on the exchange
+     * @param _id The ID of the order to cancel
+     */
     function cancelOrder(uint256 _id) public {
         // Fetch order
         _Order storage _order = orders[_id];
@@ -155,8 +197,13 @@ contract Exchange {
         );
     }
 
-    // ------------------------
+    // --------------------------------------------------------------------------------
     // FILL ORDERS
+
+    /**
+     * @notice Fill an existing order on the exchange
+     * @param _id The ID of the order to fill
+     */
     function fillOrder(uint256 _id) public {
         // 1. Must be valid orderId
         require(_id > 0 && _id <= orderCount, "Order does not exist");
@@ -182,6 +229,15 @@ contract Exchange {
         orderFilled[_order.id] = true;
     }
 
+    /**
+     * @dev Internal function to execute a trade on the exchange
+     * @param _orderId The ID of the order being filled
+     * @param _user The address of the user who created the order
+     * @param _tokenGet Address of the token to receive
+     * @param _amountGet Amount of tokens to receive
+     * @param _tokenGive Address of the token to give
+     * @param _amountGive Amount of tokens to give
+     */
     function _trade(
         uint256 _orderId,
         address _user,
